@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    title Credits
+    style.
+      /* Internal CSS styling */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th, .table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+      }
+      .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .mt-5 {
+        margin-top: 3rem;
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      p {
+        text-align: center;
+        font-size: 1.125rem;
+      }
+  body
+    .container
+      h2.text-center.mt-5.mb-4 Credits List
+      table.table.table-striped
+        thead
+          tr
+            th(scope='col') BUYER'S NAME
+            th(scope='col') NATIONAL ID
+            th(scope='col') LOCATION
+            th(scope='col') CONTACT
+            th(scope='col') AMOUNT DUE
+            th(scope='col') DUE DATE 
+            th(scope='col') SALES AGENT 
+            th(scope='col') PRODUCT NAME
+            th(scope='col') TONNAGE 
+            th(scope='col') DISPATCH DATE 
+            th(scope='col') ACTION
+        tbody
+          if credits && credits.length
+            each credit in credits
+              tr
+                td #{credit.buyername}
+                td #{credit.nationalid}
+                td #{credit.location}
+                td #{credit.contact}
+                td #{credit.amountdue}
+                td #{credit.duedate}
+                td #{credit.salesagent}
+                td #{credit.productname}
+                td #{credit.tonnage}
+                td #{credit.dispatchdate}
+                td
+                  a.btn.btn-primary.btn-sm(href='/updatecredit/'+credit._id) Update
+                td
+                  form(method="post" action='/deletecredit')
+                    input(type="hidden", name="id", value=credit._id)
+                    button.btn.btn-danger.btn-sm(type="submit") Delete
+          else
+            tr
+              td(colspan='11') No credits available.

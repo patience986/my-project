@@ -1,0 +1,73 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Add New Produce
+    link(rel='stylesheet' href='/css/procuremanagent.css')
+  body
+    header
+      h1 Stock Management - KGL
+      nav
+        a(href='/dashboard.html') Dashboard
+        a(href='/stockmanagement.html') Stock Management
+        a(href='/salesrecords.html') Sales Records
+        a(href='/creditsales.html') Credit Sales
+        a(href='/receipt.html') Receipts
+        a(href='/logout.html') Logout
+    .container
+      h2 Add New Produce
+      form#produceForm(action="/produce" method="post")
+        .form-row
+          label(for='produce') Produce Name
+          select#produce(name='producename')
+            option(value='') Select a produce
+            option(value='grain-maize') Maize
+            option(value='cowpeas') Cow Peas
+            option(value='g-nuts') G-nuts
+            option(value='rice') Rice
+            option(value='soy beans') Soybeans
+          small#productNameError.error-message Product name must be at least 2 characters long and alpha-numeric.
+        .form-row
+          label(for='typeofproduce') Produce Type
+          select#type(name='typeofproduce')
+            option(value='') Select produce type
+            option(value='legume') Legume
+            option(value='grain') Grain
+            option(value='cereals') Cereals
+          small#typeError.error-message Type must be at least 2 characters and alphabetic only.
+        .form-row
+          label(for='source') Source of produce
+          select#source(name='source')
+            option(value='') Select a source
+            option(value='individual-salers') Individual Dealers
+            option(value='other-companies') Other Companies
+            option(value='branches') Maganjo
+            option(value='branches') Matugga
+        .form-row
+          label(for='dateTime') Date of purchase
+          input#date(type='date' name='dateTime')
+          small#dateError.error-message 
+        .form-row
+          label(for='tonnage') Tonnage (kg)
+          input#tonnage(type='number' name='tonnage')
+          small#tonnageError.error-message 
+        .form-row
+          label(for='cost') Produce cost (UGX)
+          input#cost(type='number' name='cost')
+          small#costError.error-message (&ge; 10,000 UGX).
+        .form-row
+          label(for='branch') Stocking Branch
+          select#branch.branch(name='branch')
+            option(value='') Select a branch
+            option(value='Matugga') Matugga
+            option(value='Maganjo') Maganjo
+        .form-row
+          label(for='contact') Contact
+          input#contact(type='tel' name='contact')
+          small#contactError.error-message Please enter a valid 10-digit phone number.
+        .form-row
+          label(for='price') Selling Price
+          input#selling_price(type='number' name='price')
+        button(type='submit') Submit
+    script(src='/js/pocuremanagement.js')

@@ -1,0 +1,84 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Happy Hoe Grocery Store
+  style.
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+    overflow: hidden;
+    }
+    .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    }
+    .container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    }
+    .word {
+    font-size: 4em;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    color:lightsalmon;
+    }
+    .button-container {
+    margin-top: 40px;
+    }
+    .view-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: lightsalmon;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    }
+    .view-button:hover {
+    background-color: lightsalmon;
+    }
+div
+  video.background-video(autoplay='' muted='' loop='' playsinline='')
+    source(src='/images/stock.mp4' type='video/mp4')
+.container(action="/grocerystore" method='post')
+  #word1.word Happy
+  #word2.word Hoe
+  #word3.word Grocery
+  #word4.word Store
+  #word5.word Inventory
+  #word6.word Management
+  .button-container
+    a.view-button(href='/viewstock') View stock
+script.
+  // Function to show words one after another
+  function showWords() {
+  const words = [
+  document.getElementById('word1'),
+  document.getElementById('word2'),
+  document.getElementById('word3'),
+  document.getElementById('word4'),
+  document.getElementById('word5'),
+  document.getElementById('word6')
+  ];
+  words.forEach((word, index) => {
+  setTimeout(() => {
+  word.style.opacity = 1;
+  }, index * 1000); // Display each word 1 second after the previous one
+  });
+  }
+  // Call the function when the page loads
+  window.onload = showWords;
