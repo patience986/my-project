@@ -17,10 +17,11 @@ html
         a(href='/logout.html') Logout
     .container
       h2 Add New Produce
-      form#produceForm(action="/updateproduce?id="+ produce_id method="post")
+       form(action=`/updateproduce/${produce._id}`, method='POST')
         .form-row
           label(for='produce') Produce Name
           select#produce(name='producename')
+            option(value='') select a produce
             option(value='grain-maize') Maize
             option(value='cowpeas') Cow Peas
             option(value='g-nuts') G-nuts
@@ -29,7 +30,8 @@ html
           small#productNameError.error-message Product name must be at least 2 characters long and alpha-numeric.
         .form-row
           label(for='typeofproduce') Produce Type
-          select#type(name='typeofproduce')
+          select#typeofproduce(name='typeofproduce')
+            option(value='') Select produce type
             option(value='') Select produce type
             option(value='legume') Legume
             option(value='grain') Grain
@@ -38,6 +40,7 @@ html
         .form-row
           label(for='source') Source of produce
           select#source(name='source')
+            option(value='') Select a source
             option(value='') Select a source
             option(value='individual-salers') Individual Dealers
             option(value='other-companies') Other Companies
@@ -68,5 +71,6 @@ html
         .form-row
           label(for='price') Selling Price
           input#selling_price(type='number' name='price')
-        button(type='submit') Submit
+        input(type='hidden', name='id', value=produce._id)
+        button(type='submit') Update Produce
     script(src='/js/pocuremanagement.js')

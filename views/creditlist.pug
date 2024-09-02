@@ -68,7 +68,7 @@ html
             th(scope='col') DISPATCH DATE 
             th(scope='col') ACTION
         tbody
-          if credits && credits.length
+          if credits.length
             each credit in credits
               tr
                 td #{credit.buyername}
@@ -89,4 +89,4 @@ html
                     button.btn.btn-danger.btn-sm(type="submit") Delete
           else
             tr
-              td(colspan='11') No credits available.
+              td(colspan='8') No credits available.

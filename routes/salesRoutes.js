@@ -35,7 +35,7 @@ router.get('/saleslist', async (req, res) => {
     }
 });
 
-// Get produce update form
+// Get sales update form
 router.get("/updatesale/:id", async (req, res) => {
     try {
         const item = await sales.findOne({ _id: req.params.id });
@@ -68,5 +68,6 @@ router.post("/deletesales", async (req, res) => {
         res.status(400).send("Unable to delete item in the database");
     }
 });
+
 
 module.exports = router;

@@ -78,7 +78,7 @@ html
                 td #{produce.price}
                 td #{produce.dateTime}
                 td
-                  a.btn.btn-primary.btn-sm(href='/updateProduce/'+produce._id) Update
+                  a.btn.btn-primary.btn-sm(href='/updateProduce/' + produce._id) Update
                 td
                   form(method="post" action='/deleteProduce')
                     input(type="hidden", name="id", value=produce._id)
