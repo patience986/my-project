@@ -68,7 +68,7 @@ html
             th(scope='col') DISPATCH DATE 
             th(scope='col') ACTION
         tbody
-          if credits.length
+          if credits && credits .length
             each credit in credits
               tr
                 td #{credit.buyername}

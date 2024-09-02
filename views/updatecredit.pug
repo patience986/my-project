@@ -14,7 +14,7 @@ nav
   a(href='logout.html') Logout
 .form-container
   h1 Credit form
-  form#myForm(action='/credit' method='post')
+  form#myForm(action="/updatecredit?id="+ credit_id  method="post")
     label(for='name') Buyer&apos;s Name:
     input#name(type='text' name='buyername' )
     span#nameError.error
