@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title sales List
+    title Sales List
     style.
       /* Internal CSS styling */
       .table {
@@ -52,7 +52,7 @@ html
       }
   body
     .container
-      h2.text-center.mt-5.mb-4 Sales  List
+      h2.text-center.mt-5.mb-4 Sales List
       table.table.table-striped
         thead
           tr
@@ -65,22 +65,22 @@ html
             th(scope='col') DATE AND TIME
             th(scope='col') ACTION
         tbody
-          if sales.length
-            each sale in sales
+          if sales.length 
+            each sale in sales 
               tr
                 td #{sale.productname}
                 td #{sale.tonnage}
-                 td #{sale.amountpaid}
-                 td #{sale.buyername}
+                td #{sale.amountpaid}
+                td #{sale.buyername}
                 td #{sale.salesagent}
                 td #{sale.branch}
                 td #{sale.datetime}
                 td
                   a.btn.btn-primary.btn-sm(href='/updatesale/'+sale._id) Update
                 td
-                  form(method="post" action='/deletesale')
+                  form(method="post" action='/deletesales')
                     input(type="hidden", name="id", value=sale._id)
                     button.btn.btn-danger.btn-sm(type="submit") Delete
           else
             tr
-              td(colspan='8') No produce yet :
+              td(colspan='8') No sales yet

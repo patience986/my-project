@@ -17,7 +17,7 @@ html
         a(href='/logout.html') Logout
     .container
       h2 Add New Produce
-      form#produceForm(action="/updateproduce?id="+ updateproduce_id method="post")
+      form#produceForm(action="/updateproduce?id="+ produce_id method="post")
         .form-row
           label(for='produce') Produce Name
           select#produce(name='producename')
