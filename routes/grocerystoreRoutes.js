@@ -7,10 +7,7 @@ const router=express.Router();
 
     router.post("/grocerystore", (req, res) => {    // const newform = new form(req.body)
         newform.save()
-    res.redirect('/viewstore')
+    res.redirect('/viewstock')
      });
-
-   
-
 
     module.exports = router;

@@ -4,32 +4,27 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Dashboard - KGL Produce Management
   link(rel='stylesheet' href='/css/dashboard.css')
-  // Link to external CSS file
 header
   h1 Dashboard - KGL Produce Management
   nav
-    a(href='dashboard.html') Dashboard
-    a(href='stock-management.html') Stock Management
-    a(href='sales-management.html') Sales Records
-    a(href='credit-sales.html') Credit Sales
-    a(href='receipt.html') Receipts
-    // Capitalized "Receipts" for consistency
-    a(href='logout.html') Logout
-.container(action='/dashboard' method='post')
+    a(href='/dashboard') Dashboard
+    a(href='/produce') Stock Management
+    a(href='/sales') Sales Records
+    a(href='/credit') Credit Sales
+    a(href='/receipt') Receipts
+    a(href='/logout') Logout
+.container
   .overview
     .box
-      h2 150
-      p Total Stock
-      // Capitalized for consistency
+      h2 #{totalStock} 
+      p Total Stock (kg)
     .box
-      h2 UGX 200M
-      p Total Sales
+      h2 UGX #{totalSales} 
+      p Total Sales (UgX)
     .box
-      h2 10
+      h2 #{creditSales}
       p Credit Sales
     .box
-      h2 10
+      h2 #{receipts}
       p Receipts
-      // Capitalized for consistency
-script(src='script.js')
-// Link to external JS file
+script(src='/js/dashboard.js')

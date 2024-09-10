@@ -52,7 +52,7 @@ html
       }
   body
     .container
-      h2.text-center.mt-5.mb-4 Credits List
+      h2.text-center.mt-5.mb-4 CREDITS LIST
       table.table.table-striped
         thead
           tr
@@ -68,7 +68,7 @@ html
             th(scope='col') DISPATCH DATE 
             th(scope='col') ACTION
         tbody
-          if credits && credits .length
+          if credits.length
             each credit in credits
               tr
                 td #{credit.buyername}
@@ -87,6 +87,8 @@ html
                   form(method="post" action='/deletecredit')
                     input(type="hidden", name="id", value=credit._id)
                     button.btn.btn-danger.btn-sm(type="submit") Delete
+                td
+                  a.btn.btn-secondary.btn-sm(href='/receiptcredit/'+credit._id) View Receipt
           else
             tr
-              td(colspan='8') No credits available.
+              td(colspan='11') No credits available.

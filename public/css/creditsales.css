@@ -1,11 +1,17 @@
 .form-container {
-    max-width: 600px;
+    max-width: 800px; /* Increased width for a two-column layout */
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: lightsalmon;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 182, 193, 0.7); /* Light transparent color */
+    box-shadow: 0 4px 8px rgba(50, 50, 50, 50);
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-gap: 5px; /* Gap between form elements */
 }
 
 label {
@@ -17,39 +23,42 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="tel"],
-input[type="datetime-local"],
-input[type="date"] {
+input[type="date"],
+select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 4px;
-    border: black;
+    border: white; /* Added border */
     box-sizing: border-box;
 }
 
 input[type="submit"] {
-    background-color: black;
+    background-color: lightsalmon;
     color: white;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    grid-column: span 2; /* Submit button spans two columns */
 }
 
 input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: black;
 }
 
 .error {
     color: red;
     font-size: 0.9em;
+    grid-column: span 2; /* Error message spans both columns */
 }
-.navbar bg-body-tertiary fixed-top{
+
+.navbar bg-body-tertiary fixed-top {
     background-color: #333;
-    color: lightblue;
-    padding: 10px;
+    padding: 5px;
 }
+
 body {
     background-image: url('/images/p13.jpeg'); /* Replace with your actual image path */
     background-size: cover;
@@ -57,7 +66,28 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-header { background-color:black; color: lightsalmon; padding: 10px 10px; text-align: center; }
-nav { display: flex; justify-content: center; background-color: #333; }
-nav a { color: lightsalmon; padding: 14px 20px; text-decoration: none; text-align: center; }
-nav a:hover { background-color: #ddd; color: black; }
+
+header {
+    background-color: black;
+    color: lightsalmon;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+nav a {
+    color: lightsalmon;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}

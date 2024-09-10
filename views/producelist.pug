@@ -20,6 +20,8 @@ html
         font-size: 0.875rem;
         padding: 0.375rem 0.75rem;
         border-radius: 0.25rem;
+        text-decoration: none;
+        display: inline-block;
       }
       .btn-secondary {
         background-color: #6c757d;
@@ -50,21 +52,29 @@ html
         text-align: center;
         font-size: 1.125rem;
       }
+      .btn-container {
+        text-align: right;
+        margin-bottom: 20px;
+      }
   body
     .container
-      h2.text-center.mt-5.mb-4 Produce List
+      // Button container with the dashboard button
+      .btn-container
+        a.btn.btn-primary(href='/dashboard') Go to Dashboard
+        
+      h2.text-center.mt-5.mb-4 PRODUCE LIST
       table.table.table-striped
         thead
           tr
-            th(scope='col') Produce Name
-            th(scope='col') Store Branch
-            th(scope='col') Tonnage (Kg)
-            th(scope='col') Produce Cost per Kg(UGX)
-            th(scope='col') Produce Source
-            th(scope='col') Contact
-            th(scope='col') Selling Price per Kg(UGX)
-            th(scope='col') Date
-            th(scope='col') Action
+            th(scope='col') PRODUCE NAME
+            th(scope='col') STORE BRANCH
+            th(scope='col') TONNAGE(KG)
+            th(scope='col') PRODUCE COST PER KG(UGX)
+            th(scope='col') PRODUCE SOURCE
+            th(scope='col') CONTACT 
+            th(scope='col') SELLING PRICE PER KG(UGX)
+            th(scope='col') DATE
+            th(scope='col') ACTION
         tbody
           if produces.length
             each produce in produces
@@ -78,11 +88,11 @@ html
                 td #{produce.price}
                 td #{produce.dateTime}
                 td
-                  a.btn.btn-primary.btn-sm(href='/updateProduce/' + produce._id) Update
+                  a.btn.btn-primary.btn-sm(href='/updateproduce/' + produce._id) Update
                 td
-                  form(method="post" action='/deleteProduce')
+                  form(method="post" action='/deleteproduce')
                     input(type="hidden", name="id", value=produce._id)
                     button.btn.btn-danger.btn-sm(type="submit") Delete
           else
             tr
-              td(colspan='8') No produce yet :
+              td(colspan='9') No produce yet

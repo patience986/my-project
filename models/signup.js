@@ -1,31 +1,31 @@
 const mongoose = require('mongoose');
-const passportLocalMongoose = require("passport-local-mongoose");
+const passportLocalMongoose = require('passport-local-mongoose');
 
-
-const signupSchema=new mongoose.Schema({
-username:{
-    type:String,
-    trim:true
-},
-email:{
-    type:String,
-    trim:true
-    
-},
-branch:{
-    type:String,
-    trim:true
-},
-role:{
-    type:String,
-    trim:true,
-    
-},
+const SignupSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  branch: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    required: true
+  },
+  telephone: {
+    type: String,
+    required: true
+  }
 });
 
- signupSchema.plugin(passportLocalMongoose, {
-    usernameField: "email",
-    });
+// Plugin passport-local-mongoose to handle password hashing and authentication
+SignupSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
-
-module.exports = mongoose.model('Signup',signupSchema);
+module.exports = mongoose.model('Signup', SignupSchema);

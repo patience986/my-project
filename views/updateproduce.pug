@@ -10,14 +10,13 @@ html
       h1 Stock Management - KGL
       nav
         a(href='/dashboard.html') Dashboard
-        a(href='/stockmanagement.html') Stock Management
-        a(href='/salesrecords.html') Sales Records
-        a(href='/creditsales.html') Credit Sales
-        a(href='/receipt.html') Receipts
+        a(href='/produce') Stock Management
+        a(href='/sale') Sales Records
+        a(href='/credit') Credit Sales
         a(href='/logout.html') Logout
     .container
       h2 Add New Produce
-       form(action=`/updateproduce/${produce._id}`, method='POST')
+       form(action="/updateproduce?id="+ produce._id  method="post")
         .form-row
           label(for='produce') Produce Name
           select#produce(name='producename')
@@ -27,7 +26,7 @@ html
             option(value='g-nuts') G-nuts
             option(value='rice') Rice
             option(value='soy beans') Soybeans
-          small#productNameError.error-message Product name must be at least 2 characters long and alpha-numeric.
+          small#productNameError.error-message
         .form-row
           label(for='typeofproduce') Produce Type
           select#typeofproduce(name='typeofproduce')
@@ -36,7 +35,7 @@ html
             option(value='legume') Legume
             option(value='grain') Grain
             option(value='cereals') Cereals
-          small#typeError.error-message Type must be at least 2 characters and alphabetic only.
+          small#typeError.error-message 
         .form-row
           label(for='source') Source of produce
           select#source(name='source')
@@ -67,7 +66,7 @@ html
         .form-row
           label(for='contact') Contact
           input#contact(type='tel' name='contact')
-          small#contactError.error-message Please enter a valid 10-digit phone number.
+          small#contactError.error-message 
         .form-row
           label(for='price') Selling Price
           input#selling_price(type='number' name='price')

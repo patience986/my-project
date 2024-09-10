@@ -9,12 +9,11 @@ html
     header
       h1 Stock Management - KGL
       nav
-        a(href='/dashboard.html') Dashboard
-        a(href='/stockmanagement.html') Stock Management
-        a(href='/salesrecords.html') Sales Records
-        a(href='/creditsales.html') Credit Sales
-        a(href='/receipt.html') Receipts
-        a(href='/logout.html') Logout
+        a(href='/dashboard') Dashboard
+        a(href='/produce') Stock Management
+        a(href='/sales') Sales Records
+        a(href='/credit') Credit Sales
+        a(href='/dashboard') Logout
     .container
       h2 Add New Produce
       form#produceForm(action="/produce" method="post")
@@ -22,11 +21,11 @@ html
           label(for='produce') Produce Name
           select#produce(name='producename')
             option(value='') Select a produce
-            option(value='grain-maize') Maize
-            option(value='cowpeas') Cow Peas
+            option(value='maize') Maize
+            option(value='soy peas') Soy Peas
             option(value='g-nuts') G-nuts
             option(value='rice') Rice
-            option(value='soy beans') Soybeans
+            option(value=' beans') beans
           small#productNameError.error-message Product name must be at least 2 characters long and alpha-numeric.
         .form-row
           label(for='typeofproduce') Produce Type
@@ -34,7 +33,6 @@ html
             option(value='') Select produce type
             option(value='legume') Legume
             option(value='grain') Grain
-            option(value='cereals') Cereals
           small#typeError.error-message Type must be at least 2 characters and alphabetic only.
         .form-row
           label(for='source') Source of produce
@@ -42,8 +40,8 @@ html
             option(value='') Select a source
             option(value='individual-salers') Individual Dealers
             option(value='other-companies') Other Companies
-            option(value='branches') Maganjo
-            option(value='branches') Matugga
+            option(value='Maganjo') Maganjo
+            option(value='Matugga') Matugga
         .form-row
           label(for='dateTime') Date of purchase
           input#date(type='date' name='dateTime')
@@ -70,4 +68,4 @@ html
           label(for='price') Selling Price
           input#selling_price(type='number' name='price')
         button(type='submit') Submit
-    script(src='/js/pocuremanagement.js')
+    script(src='/js/produce.js')

@@ -10,7 +10,7 @@ body {
 .container {
     padding: 2rem;
     border-radius: 8px;
-    background-color:lightsalmon ;
+    background-color: rgba(255, 182, 193, 0.7);
     box-shadow: 0 0 10px rgba(20, 20, 20, 50);
     width: 300px;
 }
@@ -52,7 +52,7 @@ input {
 }
 
 button {
-    background-color: greenyellow;
+    background-color: lightsalmon;
     color: black;
     padding: 0.5rem;
     border: none;

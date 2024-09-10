@@ -1,59 +1,64 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Receipt Details - KGL
-  style.
-    body { font-family: Arial, sans-serif;  background-image: url("images/p13.jpeg"); }
-    header { background-color:  lightsalmon; color: white; padding: 10px 0; text-align: center; }
-    header nav a { color: white; margin: 0 15px; text-decoration: none; }
-    .container { margin: 20px; }
-    .receipt { background-color:whitesmoke; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .receipt h2 { border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
-    .receipt div { margin-bottom: 10px; }
-    .actions button { padding: 10px; background-color:  lightsalmon; color: white; border: none; cursor: pointer; }
-header
-  h1 Receipt Details - KGL
-  nav
-    a(href='dashboard.html') Dashboard
-    a(href='stockmanagement.html') Stock Management
-    a(href='salesrecords.html') Sales Records
-    a(href='creditsales.html') Credit Sales
-    a(href='receipt.html') receipt
-    a(href='logout.html') Logout
-.container
-  // Receipt Details
-  .receipt(action='/receipt',method='POST')
-    h2 Receipt Details
-    div
-      strong Receipt Number:
-      |  12345
-    div
-      strong Date &amp; Time:
-      |  2024-08-24 10:30 AM
-    div
-      strong Product Name:
-      |  Rice
-    div
-      strong Tonnage Sold (kg):
-      |  500
-    div
-      strong Amount Paid (UGX):
-      |  3000000
-    div
-      strong Buyer&rsquo;s Name:
-      |  Jane Doe
-    div
-      strong Sales Agent:
-      |  John Smith
-    div
-      strong Branch:
-      |  Maganjo
-    // Print and Download actions
-    .actions
-      button(onclick='window.print()') Print Receipt
-      button(onclick='downloadPDF()') Download PDF
-script.
-  function downloadPDF() {
-  alert('PDF download is not implemented yet.');
-  }
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Receipt Details - KGL
+    style.
+      /* Internal CSS styling for the receipt */
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1, h2 {
+        text-align: center;
+      }
+      table {
+        width: 80%;
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: rgba(255, 182, 193, 0.7); ;
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+      }
+     
+      
+  body
+    .container
+      header
+        h1 Receipt Details - KGL
+      .receipt
+        h2 Receipt Details
+        table
+          tr
+            th Date &amp; time
+            td #{new Date(sale.datetime).toLocaleString()}
+          tr
+            th Product Name
+            td #{sale.producename}
+          tr
+            th Tonnage Sold (kg)
+            td #{sale.tonnage}
+          tr
+            th Amount Paid (UGX)
+            td #{sale.amountpaid}
+          tr
+            th Buyer’s Name
+            td #{sale.buyername}
+          tr
+            th Sales Agent
+            td #{sale.salesagent}
+          tr
+            th Branch
+            td #{sale.branch}
+      footer
+        p © 2024 KGL

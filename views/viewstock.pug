@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title View Stock - Produce Cards
+    link(rel='stylesheet' href='/css/stock.css') 
+  body
+    header
+      h1  View Stock
+    .container
+      h2 Stock Overview
+      .card-container
+        if produces.length > 0
+          each produce in produces
+            .card
+              h3= produce.producename 
+              p Type: #{produce.typeofproduce}  
+              p Source: #{produce.source}  
+              p Tonnage: #{produce.tonnage} kg
+              form(action='/updateTonnage', method='post')
+        else
+          p No produce items found.
+  .button-container
+    a.view-button(href='/Signup') Signup
+    script(src='/js/viewstock.js')  

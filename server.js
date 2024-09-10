@@ -22,7 +22,9 @@ require('dotenv').config();
 
 
 //import models
-const Signup = require('./models/signup');
+const Signup = require('./models/Signup');
+const sales = require('./models/sales');
+const credit= require('./models/credit');
 
 
 
@@ -33,6 +35,9 @@ const produceRoutes = require('./routes/produceRoutes');
 const grocerystoreRoutes = require('./routes/grocerystoreRoutes'); 
 const salesRoutes = require('./routes/salesRoutes');
 const creditRoutes = require('./routes/creditRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const receiptRoutes = require('./routes/receiptRoutes');
+const SignupRoutes = require('./routes/signupRoutes');
 
 
 
@@ -96,6 +101,9 @@ app.use('/', produceRoutes);
 app.use('/', grocerystoreRoutes);
 app.use('/', salesRoutes);
 app.use('/', creditRoutes);
+app.use('/', dashboardRoutes);
+app.use('/', receiptRoutes);
+app.use('/', SignupRoutes);
  
 
 

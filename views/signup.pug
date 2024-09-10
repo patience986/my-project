@@ -1,3 +1,4 @@
+
 doctype html
 head
   meta(charset='UTF-8')
@@ -15,7 +16,7 @@ head
     background-image: url("images/p13.jpeg");
     }
     .form-container {
-    background-color:lightsalmon;
+    background-color:rgba(255, 182, 193, 0.7); ;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -56,9 +57,9 @@ head
     }
     button {
     grid-column: 1 / span 2;
-    width: 100%;
+    width: 50%;
     padding: 10px;
-    background-color: #004080;
+    background-color: lightsalmon ;
     color: white;
     border: none;
     border-radius: 4px;
@@ -66,7 +67,7 @@ head
     cursor: pointer;
     }
     button:hover {
-    background-color: #003060;
+    background-color: black;
     }
     .full-width {
     grid-column: 1 / span 2;
@@ -81,7 +82,7 @@ head
     }
 .form-container
   h2 Sign Up Form
-  form#signupForm(action='/Signup' method='post')
+  form#signupForm(action='/Signup' method='POST')
     div
       label(for='username') Username:
       input#username(type='text' name='username')
@@ -101,7 +102,7 @@ head
       label(for='role') Role:
       select#role(name='role')
         option(value='') Select Role
-        option(value='sales_agent') Sales Agent
+        option(value='salesagent') Sales Agent
         option(value='manager') Manager
       span#roleError.error
     div

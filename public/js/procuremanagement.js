@@ -58,7 +58,7 @@ document.getElementById("salesForm").addEventListener("submit", function (event)
     // If all validations pass, you can proceed with form submission
     if (valid) {
         // Uncomment the line below to actually submit the form
-        // this.submit();
+        this.submit();
         alert("Form submitted successfully!");
     }
 });

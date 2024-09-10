@@ -1,81 +1,69 @@
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission to handle custom validation
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    // Get form inputs
+    const producename = document.getElementById("producename").value;
+    const tonnage = document.getElementById("tonnage").value;
+    const amountpaid = document.getElementById("amountPaid").value;
+    const buyername = document.getElementById("buyerName").value;
+    const salesagent = document.getElementById("salesAgent").value;
+    const branch = document.getElementById("branch").value;
+    const datetime = document.getElementById("dateTime").value;
 
-    // Clear previous errors
-    clearErrors();
+    // Get error spans
+    const productnameError = document.getElementById("productnameError");
+    const tonnageError = document.getElementById("tonnageError");
+    const amountPaidError = document.getElementById("amountPaidError");
+    const buyerNameError = document.getElementById("buyerNameError");
+    const salesAgentError = document.getElementById("salesAgentError");
+    const dateTimeError = document.getElementById("dateTimeError");
 
     let isValid = true;
 
-    // Get all form inputs
-    const productName = document.getElementById('productName');
-    const tonnage = document.getElementById('tonnage');
-    const amountPaid = document.getElementById('amountPaid');
-    const buyerName = document.getElementById('buyerName');
-    const salesAgent = document.getElementById('salesAgent');
-    const dateTime = document.getElementById('dateTime');
+    // Clear all previous error messages
+    productnameError.innerHTML = "";
+    tonnageError.innerHTML = "";
+    amountPaidError.innerHTML = "";
+    buyerNameError.innerHTML = "";
+    salesAgentError.innerHTML = "";
+    dateTimeError.innerHTML = "";
 
-    // Validate Product Name
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(productName.value)) {
-        showError('productNameError', 'Please enter a valid product name (alphanumeric, at least 2 characters).');
+    // Validate produce name (must be selected)
+    if (producename === "") {
+        productnameError.innerHTML = "Please select a produce.";
         isValid = false;
-    } else {
-        document.getElementById('productNameError').textContent = '';
     }
 
-    // Validate Tonnage
-    if (tonnage.value < 1) {
-        showError('tonnageError', 'Tonnage must be a positive number.');
+    // Validate tonnage (must be a positive number)
+    if (tonnage <= 0) {
+        tonnageError.innerHTML = "Tonnage must be a positive number.";
         isValid = false;
-    } else {
-        document.getElementById('tonnageError').textContent = '';
     }
 
-    // Validate Amount Paid
-    if (amountPaid.value < 10000) {
-        showError('amountPaidError', 'Amount paid must be at least 10,000 UgX.');
+    // Validate amount paid (at least 5 characters)
+    if (amountpaid.length < 5) {
+        amountPaidError.innerHTML = "Amount paid must be at least 5 characters.";
         isValid = false;
-    } else {
-        document.getElementById('amountPaidError').textContent = '';
     }
 
-    // Validate Buyer's Name
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(buyerName.value)) {
-        showError('buyerNameError', 'Please enter a valid buyer name (alphanumeric, at least 2 characters).');
+    // Validate buyer's name (alphanumeric, at least 2 characters)
+    if (!/^[a-z0-9]+$/i.test(buyername) || buyername.length < 2) {
+        buyerNameError.innerHTML = "Buyer's name must be alphanumeric and at least 2 characters long.";
         isValid = false;
-    } else {
-        document.getElementById('buyerNameError').textContent = '';
     }
 
-    // Validate Sales Agent
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(salesAgent.value)) {
-        showError('salesAgentError', 'Please enter a valid sales agent name (alphanumeric, at least 2 characters).');
+    // Validate sales agent's name (alphanumeric, at least 2 characters)
+    if (!/^[a-z0-9]+$/i.test(salesagent) || salesagent.length < 2) {
+        salesAgentError.innerHTML = "Sales agent's name must be alphanumeric and at least 2 characters long.";
         isValid = false;
-    } else {
-        document.getElementById('salesAgentError').textContent = '';
     }
 
-    // Validate Date and Time
-    if (!dateTime.value) {
-        showError('dateTimeError', 'Please select a date and time.');
+    // Validate date and time (must not be empty)
+    if (datetime === "") {
+        dateTimeError.innerHTML = "Please select a valid date and time.";
         isValid = false;
-    } else {
-        document.getElementById('dateTimeError').textContent = '';
     }
 
-    // If the form is valid, proceed to submit or perform further actions
-    if (isValid) {
-        alert('Form submitted successfully!');
-        // form.submit(); // Uncomment this line to submit the form
+    // If the form is invalid, prevent submission
+    if (!isValid) {
+        event.preventDefault();
     }
 });
-
-function showError(elementId, message) {
-    document.getElementById(elementId).textContent = message;
-}
-
-function clearErrors() {
-    const errors = document.querySelectorAll('.error');
-    errors.forEach(error => {
-        error.textContent = '';
-    });
-}
