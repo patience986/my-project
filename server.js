@@ -28,9 +28,9 @@ const credit= require('./models/credit');
 
 
 
+
 //configuration
 //importing routes
-const loginRoutes = require('./routes/loginRoutes');
 const produceRoutes = require('./routes/produceRoutes');
 const grocerystoreRoutes = require('./routes/grocerystoreRoutes'); 
 const salesRoutes = require('./routes/salesRoutes');
@@ -38,6 +38,7 @@ const creditRoutes = require('./routes/creditRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const receiptRoutes = require('./routes/receiptRoutes');
 const SignupRoutes = require('./routes/signupRoutes');
+const sdashboard =require('./routes/sdashboardRoutes');
 
 
 
@@ -96,7 +97,6 @@ passport.deserializeUser(Signup.deserializeUser());
 
 
 //Routes
-app.use('/', loginRoutes);
 app.use('/', produceRoutes);
 app.use('/', grocerystoreRoutes);
 app.use('/', salesRoutes);
@@ -104,6 +104,7 @@ app.use('/', creditRoutes);
 app.use('/', dashboardRoutes);
 app.use('/', receiptRoutes);
 app.use('/', SignupRoutes);
+app.use('/', sdashboard);
  
 
 

@@ -8,11 +8,13 @@ html
   header
     h1 Happy Hoe Grocery Ltd.
     nav
-      a(href='/dashboard.html') Dashboard
+      a(href='/dashboard') Dashboard
       a(href='/produce') Stock Management
       a(href='/sale') Sales Records
+      a(href='/saleslist') saleslist
       a(href='/credit') Credit Sales
-      a(href='/logout.html') Logout
+      a(href='/creditlist') creditlist
+      a(href='/dashboard') Logout
   .form-container
     h1 Credit form
     form#myForm(action="/credit" method='post')
@@ -56,4 +58,4 @@ html
       input#dispatchDate(type='date' name='dispatchdate')
 
       input(type='submit' value='Submit')
-  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous')
+  script(src='/js/creditsales.js')

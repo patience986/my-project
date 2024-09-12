@@ -1,5 +1,5 @@
 {
-  "name": "helloworld",
+  "name": "hhg",
   "version": "1.0.0",
   "description": "this is  a node.js project",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "start": " nodemon server.js"
   },
   "keywords": [
-    "helloworld",
+    "hhg",
     "node.js"
   ],
   "author": "Nalweyiso Patience",

@@ -8,11 +8,9 @@ head
   h1 KGL Login
   form(action='/login' method='POST')
     label(for='username') Username
-    input#username(type='text' name='username' placeholder='Enter Username')
+    input#username(type='text' name='username' )
     label(for='password') Password
-    input#password(type='password' name='password' placeholder='Enter Password')
+    input#password(type='password' name='password')
     label(for='role') Role
     input#role(type='role' name='role' placeholder='your role')
     button(type='submit') Login
-  .footer
-    a(href='#') Already have account

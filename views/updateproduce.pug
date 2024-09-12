@@ -9,11 +9,13 @@ html
     header
       h1 Stock Management - KGL
       nav
-        a(href='/dashboard.html') Dashboard
-        a(href='/produce') Stock Management
-        a(href='/sale') Sales Records
-        a(href='/credit') Credit Sales
-        a(href='/logout.html') Logout
+         a(href='/dashboard') Dashboard
+      a(href='/produce') Stock Management
+      a(href='/sale') Sales Records
+      a(href='/saleslist') saleslist
+      a(href='/credit') Credit Sales
+      a(href='/creditlist') creditlist
+      a(href='/dashboard') Logout
     .container
       h2 Add New Produce
        form(action="/updateproduce?id="+ produce._id  method="post")

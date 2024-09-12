@@ -1,104 +1,135 @@
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission to handle custom validation
+// Get the form element
+const form = document.getElementById('myForm');
 
-    // Clear previous errors
-    clearErrors();
+// Get all form fields by their IDs
+const buyerName = document.getElementById('name');
+const nationalId = document.getElementById('nationalId');
+const location = document.getElementById('location');
+const contact = document.getElementById('contact');
+const amountDue = document.getElementById('amountDue');
+const salesAgent = document.getElementById('salesAgent');
+const dueDate = document.getElementById('dueDate');
+const produce = document.getElementById('produce');
+const productType = document.getElementById('productType');
+const tonnage = document.getElementById('tonnage');
+const dispatchDate = document.getElementById('dispatchDate');
 
-    let isValid = true;
+// Get the error message spans by their IDs
+const buyerNameError = document.getElementById('buyerNameError');
+const nationalIdError = document.getElementById('nationalIdError');
+const locationError = document.getElementById('locationError');
+const contactError = document.getElementById('contactError');
+const amountDueError = document.getElementById('amountDueError');
+const salesAgentError = document.getElementById('salesAgentError');
+const dueDateError = document.getElementById('dueDateError');
+const produceError = document.getElementById('produceError');
+const productTypeError = document.getElementById('productTypeError');
+const tonnageError = document.getElementById('tonnageError');
+const dispatchDateError = document.getElementById('dispatchDateError');
 
-    // Get all form inputs
-    const name = document.getElementById('name');
-    const nationalId = document.getElementById('nationalId');
-    const location = document.getElementById('location');
-    const contact = document.getElementById('contact');
-    const amountDue = document.getElementById('amountDue');
-    const salesAgent = document.getElementById('salesAgent');
-    const dueDate = document.getElementById('dueDate');
-    const productName = document.getElementById('productName');
-    const productType = document.getElementById('productType');
-    const tonnage = document.getElementById('tonnage');
-    const dispatchDate = document.getElementById('dispatchDate');
+// Add form submit event listener
+form.addEventListener('submit', function (event) {
+  // Prevent form submission by default
+  event.preventDefault();
 
-    // Validate Buyer's Name
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(name.value)) {
-        showError('nameError', 'Please enter a valid buyer name (alphanumeric, at least 2 characters).');
-        isValid = false;
-    }
+  // Initialize validation flag
+  let isValid = true;
 
-    // Validate National ID (NIN)
-    if (!/^[A-Za-z0-9]{10,}$/.test(nationalId.value)) {
-        showError('nationalIdError', 'Please enter a valid National ID (at least 10 characters).');
-        isValid = false;
-    }
+  // Clear all previous error messages
+  clearErrors();
 
-    // Validate Location
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(location.value)) {
-        showError('locationError', 'Please enter a valid location (alphanumeric, at least 2 characters).');
-        isValid = false;
-    }
+  // Validate Buyer Name (alpha-numeric, minimum 2 characters)
+  if (!/^[a-zA-Z0-9 ]{2,}$/.test(buyerName.value)) {
+    buyerNameError.textContent = 'Buyer\'s name must be alphanumeric and at least 2 characters long.';
+    buyerName.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Contact
-    if (!/^\+?\d{10,15}$/.test(contact.value)) {
-        showError('contactError', 'Please enter a valid phone number (10 to 15 digits).');
-        isValid = false;
-    }
+  // Validate National ID (must be exactly 13 characters alphanumeric)
+  if (!/^[A-Z0-9]{13}$/.test(nationalId.value)) {
+    nationalIdError.textContent = 'National ID must be exactly 13 alphanumeric characters.';
+    nationalId.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Amount Due
-    if (amountDue.value.toString().length < 5) {
-        showError('amountDueError', 'Amount due must be at least 10,000 UgX.');
-        isValid = false;
-    }
+  // Validate Location (alpha-numeric, minimum 2 characters)
+  if (!/^[a-zA-Z0-9 ]{2,}$/.test(location.value)) {
+    locationError.textContent = 'Location must be alphanumeric and at least 2 characters long.';
+    location.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Sales Agent
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(salesAgent.value)) {
-        showError('salesAgentError', 'Please enter a valid sales agent name (alphanumeric, at least 2 characters).');
-        isValid = false;
-    }
+  // Validate Contact (valid phone format +256XXXXXXXXX or 07XXXXXXXX)
+  if (!/^(\+256|07)\d{8}$/.test(contact.value)) {
+    contactError.textContent = 'Enter a valid contact number in the format +256XXXXXXXXX or 07XXXXXXXX.';
+    contact.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Due Date
-    if (!dueDate.value) {
-        showError('dueDateError', 'Please select a due date.');
-        isValid = false;
-    }
+  // Validate Amount Due (must not be empty and at least 5 digits long)
+  if (amountDue.value.length < 5) {
+    amountDueError.textContent = 'Amount Due must be at least 5 digits long.';
+    amountDue.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Product Name
-    if (!/^[A-Za-z0-9\s]{2,}$/.test(productName.value)) {
-        showError('productNameError', 'Please enter a valid product name (alphanumeric, at least 2 characters).');
-        isValid = false;
-    }
+  // Validate Sales Agent Name (alpha-numeric, minimum 2 characters)
+  if (!/^[a-zA-Z0-9 ]{2,}$/.test(salesAgent.value)) {
+    salesAgentError.textContent = 'Sales agent\'s name must be alphanumeric and at least 2 characters long.';
+    salesAgent.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Type of Produce
-    if (!/^[A-Za-z\s]{2,}$/.test(productType.value)) {
-        showError('productTypeError', 'Please enter a valid product type (alphabetic, at least 2 characters).');
-        isValid = false;
-    }
+  // Validate Due Date (must not be empty)
+  if (dueDate.value === '') {
+    dueDateError.textContent = 'Please select a valid due date.';
+    dueDate.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Tonnage
-    if (tonnage.value < 1) {
-        showError('tonnageError', 'Tonnage must be a positive number.');
-        isValid = false;
-    }
+  // Validate Produce Name (must be selected)
+  if (produce.value === '') {
+    produceError.textContent = 'Please select a produce.';
+    produce.classList.add('error');
+    isValid = false;
+  }
 
-    // Validate Date of Dispatch
-    if (!dispatchDate.value) {
-        showError('dispatchDateError', 'Please select a valid date of dispatch.');
-        isValid = false;
-    }
+  // Validate Product Type (must not be empty)
+  if (productType.value.trim() === '') {
+    productTypeError.textContent = 'Please provide the product type.';
+    productType.classList.add('error');
+    isValid = false;
+  }
 
-    // If the form is valid, proceed to submit or perform further actions
-    if (isValid) {
-        alert('Form submitted successfully!');
-        // form.submit(); // Uncomment this line to submit the form
-    }
+  // Validate Tonnage (must be a positive number and not empty)
+  if (tonnage.value === '' || tonnage.value <= 0) {
+    tonnageError.textContent = 'Please enter a valid tonnage (kg).';
+    tonnage.classList.add('error');
+    isValid = false;
+  }
+
+  // Validate Dispatch Date (must not be empty)
+  if (dispatchDate.value === '') {
+    dispatchDateError.textContent = 'Please select a valid dispatch date.';
+    dispatchDate.classList.add('error');
+    isValid = false;
+  }
+
+  // If all validations pass, submit the form
+  if (isValid) {
+    form.submit();
+  }
 });
 
-function showError(elementId, message) {
-    document.getElementById(elementId).textContent = message;
-}
-
+// Function to clear error messages
 function clearErrors() {
-    const errors = document.querySelectorAll('.error');
-    errors.forEach(error => {
-        error.textContent = '';
-    });
+  const errorMessages = document.querySelectorAll('.error-message');
+  errorMessages.forEach(error => {
+    error.textContent = '';
+  });
+
+  const formElements = document.querySelectorAll('input, select');
+  formElements.forEach(element => {
+    element.classList.remove('error');
+  });
 }

@@ -10,10 +10,12 @@ header
   h1 Happy Hoe Grocery Ltd.
 nav
    a(href='/dashboard') Dashboard
-        a(href='/produce') Stock Management
-        a(href='/sale') Sales Records
-        a(href='/credit') Credit Sales
-        a(href='/dashboard') Logout
+      a(href='/produce') Stock Management
+      a(href='/sale') Sales Records
+      a(href='/saleslist') saleslist
+      a(href='/credit') Credit Sales
+      a(href='/creditlist') creditlist
+      a(href='/dashboard') Logout
 .form-container
   h1.h1 Sales Form
   form#myForm(action="/updatesales?id="+ sales._id  method="post")

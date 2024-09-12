@@ -118,6 +118,8 @@ head
       input#telephone(type='tel' name='telephone' placeholder='your phone number')
       span#telephoneError.error
     button(type='submit') Sign Up
+    .footer
+    a(href='/login') Already have account
 script.
   document.getElementById("signupForm").addEventListener("submit", function (event) {
   const username = document.getElementById("username");
